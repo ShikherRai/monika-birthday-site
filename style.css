@@ -1,0 +1,163 @@
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:system-ui;
+ background:black;
+ color:white;
+ overflow-x:hidden;
+}
+
+canvas{
+ position:fixed;
+ inset:0;
+ z-index:-3;
+}
+
+#fireworks{z-index:2;pointer-events:none}
+#meteors{z-index:-2}
+
+.hero{
+ min-height:100vh;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ text-align:center;
+ padding:80px 20px;
+}
+
+.hero h1{
+ font-size:3.2rem;
+ background:linear-gradient(90deg,#ffb6ff,#ffe27a,#8fd3f4);
+ -webkit-background-clip:text;
+ background-clip:text;
+ color:transparent;
+ animation:glow 4s infinite;
+}
+
+@keyframes glow{
+ 50%{filter:drop-shadow(0 0 30px gold)}
+}
+
+.music-toggle{
+ position:fixed;
+ top:20px;
+ right:20px;
+ background:#ffffff22;
+ padding:14px;
+ border-radius:50%;
+ cursor:pointer;
+ -webkit-backdrop-filter:blur(10px);
+ backdrop-filter:blur(10px);
+ z-index:4;
+}
+
+.music-toggle::after{
+ content:"";
+ display:block;
+ height:6px;
+ background:linear-gradient(90deg,#ff8,#f0f);
+ animation:beat .5s infinite alternate;
+}
+
+@keyframes beat{
+ from{width:10px}
+ to{width:40px}
+}
+
+/* floating zodiac */
+.zodiac-layer{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ opacity:.12;
+ font-size:2.5rem;
+ animation:float 18s linear infinite;
+}
+
+@keyframes float{
+ from{transform:translateY(0)}
+ to{transform:translateY(-200vh)}
+}
+
+/* cards */
+
+.daily{text-align:center;padding:60px 20px}
+
+.day{
+ background:rgba(255,255,255,.12);
+ margin:20px auto;
+ padding:25px;
+ max-width:650px;
+ border-radius:25px;
+ -webkit-backdrop-filter:blur(20px);
+ backdrop-filter:blur(20px);
+ border:1px solid rgba(255,255,255,.2);
+ opacity:0;
+ transform:translateY(80px) scale(.9);
+ transition:.8s;
+}
+
+.day.unlocked{
+ opacity:1;
+ transform:translateY(0) scale(1);
+ box-shadow:0 0 35px gold;
+}
+
+/* finale glow */
+
+.finale{
+ animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+ 50%{box-shadow:0 0 80px hotpink}
+}
+
+/* slideshow */
+
+.slideshow.advanced{
+ display:flex;
+ justify-content:center;
+ gap:25px;
+ margin:25px 0;
+ perspective:1200px;
+}
+
+.flip{
+ width:170px;
+ height:230px;
+ transform-style:preserve-3d;
+ transition:1s;
+}
+
+.flip img{
+ width:100%;
+ height:100%;
+ border-radius:20px;
+ box-shadow:0 0 30px violet;
+}
+
+.flip:hover{transform:rotateY(180deg)}
+
+button{
+ padding:14px 30px;
+ border:none;
+ border-radius:30px;
+ background:linear-gradient(90deg,gold,pink);
+ font-size:1rem;
+ cursor:pointer;
+}
+
+/* astrology */
+
+.astro{
+ text-align:center;
+ padding:80px 20px;
+}
+
+#prediction{
+ margin-top:20px;
+ font-size:1.2rem;
+ min-height:60px;
+}
